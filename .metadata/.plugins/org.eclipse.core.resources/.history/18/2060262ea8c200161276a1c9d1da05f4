@@ -1,0 +1,22 @@
+app.factory('UserService',function($http)
+		{
+	       var userService=this;
+	       var BASE_URL="http://localhost:8089/backendPro/"
+	    	   userService.authenticate=function(user)
+	    	   {
+	    	      return  $http.post(BASE_URL+"/login",user)
+	    	   }
+	       return userService;
+		})
+		userService.saveUser=function(user){
+		console.log('entering save user in service')
+		return $http.post(BASE_URL+"/register",user)
+		.then(function(response){
+			console.log(response.status)
+			console.log(response.headers.location)
+			return response.status
+		},function(response){
+			console.log(response.status)
+			return response.status
+		})
+	};

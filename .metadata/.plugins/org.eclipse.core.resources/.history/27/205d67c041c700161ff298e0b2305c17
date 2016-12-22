@@ -1,0 +1,39 @@
+app.factory('UserService',function($http){
+	console.log('entering UserService')
+	var userService=this;
+	var BASE_URL="http://localhost:8089/backendPro"
+	userService.authenticate=function(user){
+		return $http.post(BASE_URL + "/login",user);
+	}
+	userService.fetchAllUsers=function(){
+		console.log('entering fetchallpersons in service')
+		return $http.get("http://localhost:8089/backendPro/user")
+		.then(function(response){
+			//response is an object returened from the back end
+			//data,status,headers,statustext
+			//data-list of person
+			console.log(response.data)
+			console.log(response.status)
+			return response.data
+		},
+		function(response)
+		{
+			console.log(response.data)
+			return response.data
+		})
+	};
+	userService.registerUser=function(user){
+		console.log('entering userservice register page')
+		return $http.post(BASE_URL + "/register",user) 
+		.then(function(response){
+			console.log(response.status)
+			console.log(response.headers.location)
+			return response.status
+		},function(response){
+			console.log(response.status)
+			return response.status
+		})
+	}
+	
+	return userService;
+})

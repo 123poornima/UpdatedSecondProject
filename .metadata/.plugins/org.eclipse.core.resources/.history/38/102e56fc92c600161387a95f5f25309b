@@ -1,0 +1,59 @@
+app.controller('UserController',function($scope,$location,UserService){
+	$scope.user={id:'',username:'',password:'',email:'',role:'',isOnline:'',enabled:''};
+	$scope.message;
+	$scope.submit=function()
+	{
+		console.log('Entering - submit function in usercontroller')
+		UserService.authenticate($scope.user)
+		.then(function(response)
+		{
+			if(response.status==400)
+				{
+				  $scope.message="invalid username and password"
+				  $location.path("/login");
+				}
+			else
+				{
+				  $scope.user=response.data;
+				  $location.path("/home");
+				}
+		})
+	}
+	$scope.registerUser=function()
+	{
+		console.log('entering function save in user controller')
+		//$scope.category-values entered by the client in the form
+		UserService.registerUser($scope.user)
+		.then(
+		  function(response)
+		  {
+			  //console.log(d.status) 
+			  console.log("registration success" + response.status)
+				$location.path("/home");
+			  //fetchAllPersons();
+			  //redirect
+			 // $location.path('/listOfPerson')
+		  },
+		  function(response)
+		  {
+			  //console.log(d.status)
+			  console.log("registration failed" + response.status)
+			console.log(response.data)
+			$scope.errorMessage="Registration failed...." + response.data.message
+			$location.path("/register")
+		  });
+	}
+	/*$scope.registerUser=function(){
+		console.log('entering registerUser')
+		UserService.registerUser($scope.user)
+		.then(function(response){ //success 
+			console.log("registration success" + response.status)
+			$location.path("/home");
+		},function(response){//failure
+			console.log("registration failed" + response.status)
+			console.log(response.data)
+			$scope.errorMessage="Registration failed...." + response.data.message
+			$location.path("/register")
+		})
+	}*/
+})

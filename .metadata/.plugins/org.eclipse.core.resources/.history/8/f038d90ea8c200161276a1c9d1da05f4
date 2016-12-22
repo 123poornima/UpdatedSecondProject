@@ -1,0 +1,39 @@
+app.controller('UserController',function($scope,$location,UserService){
+	$scope.user={id:'',username:'',password:'',email:'',role:'',isOnline:'',enabled:''};
+	$scope.message;
+	$scope.submit=function()
+	{
+		console.log('Entering - submit function in usercontroller')
+		UserService.authenticate($scope.user)
+		.then(function(response)
+		{
+			if(response.status==400)
+				{
+				  $scope.message="invalid username and password"
+				  $location.path("/login");
+				}
+			else
+				{
+				  $scope.user=response.data;
+				  $location.path("/home");
+				}
+		})
+	}
+	$scope.save=function()
+	{
+		console.log('entering function save in User controller')
+		//$scope.category-values entered by the client in the form
+		UserService.saveUser($scope.user).then(
+		  function(d)
+		  {
+			  console.log(d.status) 			  
+			 // fetchAllPersons();
+			  //redirect
+			 // $location.path('/listOfUsers')
+		  },
+		  function(d)
+		  {
+			  console.log(d.status)
+		  });
+	}
+})
