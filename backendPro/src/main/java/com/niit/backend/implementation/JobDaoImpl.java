@@ -1,6 +1,7 @@
 package com.niit.backend.implementation;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.backend.dao.JobDao;
 import com.niit.backend.model.Job;
+import com.niit.backend.model.User;
 
 @EnableTransactionManagement
 @Transactional
@@ -26,6 +28,14 @@ public class JobDaoImpl implements JobDao
 		  sessionFactory.getCurrentSession().saveOrUpdate(job);
 	   }
 	
+	@Override
+	public Job getJobDetail(int jobId) {
+		Session session=sessionFactory.openSession();
+		Job job=(Job)session.get(Job.class, jobId);
+		session.close();
+		return job;
+	}
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 		
@@ -38,12 +48,19 @@ public class JobDaoImpl implements JobDao
 
 		}
 
-		@Override
+	/*	@Override
 		public List<Job> getAllJobs() {
 			Session session=sessionFactory.openSession();
 			Query query=session.createQuery("from Job");
 			List<Job> jobs=query.list();
 			session.close();
 			return jobs;
+		}*/
+		@Transactional
+		public List<Job> getAllJobs()
+		{
+			List<Job> list= (List<Job>) sessionFactory.getCurrentSession().createCriteria(Job.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+			return list;
+					
 		}
 }

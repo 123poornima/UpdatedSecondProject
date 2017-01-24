@@ -1,12 +1,12 @@
 app.factory('UserService',function($http){
 	console.log('entering UserService')
-	var BASE_URL="http://localhost:8081/backendPro"
+	var BASE_URL="http://localhost:8085/backendPro"
 	var userService=this;
 	
 	
 	userService.fetchAllUsers=function(){
 		console.log('entering fetchallusers in service')
-		return $http.get("http://localhost:8081/backendPro/user")
+		return $http.get("http://localhost:8085/backendPro/getUsers")
 		.then(function(response){
 			//response is an object returened from the back end
 			//data,status,headers,statustext
@@ -21,7 +21,15 @@ app.factory('UserService',function($http){
 			return response.data
 		})
 	};
+	userService.getAllUsers=function(){
+		console.log('entering getallusers in user service')
+		return $http.get(BASE_URL +"/getUsers")
+	}
 	
+	userService.friendRequest=function(username){
+		console.log('service --- friendRequest');
+		return $http.post(BASE_URL+ '/friendRequest',username);
+	}
 	userService.authenticate=function(user){
 		console.log('entering servce login')
 		return $http.post(BASE_URL + "/login",user);
@@ -40,7 +48,7 @@ app.factory('UserService',function($http){
 		})
 	}
 	
-	return userService;
+	
 	
 	userService.logout=function(){
 		console.log('entering logout service')

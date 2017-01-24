@@ -10,4 +10,7 @@ public interface JobDao
 	 public void addJob(Job job);
 	void postJob(Job job);
 	List<Job> getAllJobs();
+	Job getJobDetail(int jobId);
+	
+		
 }

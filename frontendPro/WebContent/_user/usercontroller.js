@@ -20,6 +20,37 @@ app.controller('UserController',function($scope,$rootScope,$location,UserService
 				)
 	}
 	fetchAllUsers();
+	$scope.friendRequest=function(username){
+		alert('friendRequest in userController')
+		console.log('friendrequest function')
+		UserService.friendRequest(username)
+		.then(function(response){
+			console.log(response.status);
+			alert('Friend request Send')
+			getAllUsers();
+			$location.path('/getAllUsers')
+		},
+		function(response){
+			console.log(response.status);
+		}
+		)
+	}
+	
+	
+	
+	function getAllUsers(){
+		console.log('entering get all users ')
+		UserService.getAllUsers()
+		.then(function(response){
+		console.log(response.status)
+		console.log(response.data)
+		$scope.users=response.data
+		},function(response){
+			console.log(response.status)
+		}
+		)
+	}
+	getAllUsers()
 	$scope.submit=function(){
 		console.log('Entering - submit function in usercontroller')
 		
@@ -29,6 +60,8 @@ app.controller('UserController',function($scope,$rootScope,$location,UserService
 			console.log('entering success login')
 				$scope.user=response.data;
 				$rootScope.currentUser=$scope.user;
+				//$cookieStore.put('currentUser',$rootScope.currentUser)
+				//console.log('currentUser in rootScope ' + $rootScope.currentUser.id)
 				$location.path("/home");
 		},
 		function(response){//invalid user name and password - failure 
@@ -77,6 +110,12 @@ app.controller('UserController',function($scope,$rootScope,$location,UserService
 			console.log(response.status);
 		})
 		
+	}
+	
+	$rootScope.hasRole=function(role){
+		if($rootScope.currentUser.role==undefined)
+			return false;
+		return $rootScope.currentUser.role==role;
 	}
 	/*$scope.registerUser=function(){
 		console.log('entering registerUser')

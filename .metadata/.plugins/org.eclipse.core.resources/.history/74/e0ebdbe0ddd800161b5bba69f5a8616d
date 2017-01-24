@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<label style="color:#F5F5DC">Search By Title:</label>
+<input type="text" ng-model="search.title">
+
+<label>Search By Author</label>
+<input type="text" ng-model="search.createdBy.username">
+<br>
+<br>
+<div class="table-responsive">
+<table  align="center" class="table">
+<tr bgcolor=#FAEBD7>
+<th>Recent Posts<th>
+</tr>
+
+<tr bgcolor="#F0F8FF" ng-repeat="blogPost in blogPosts | orderBy:'date':true | filter:search">
+
+<td><a href="#/getBlogDetail/{{blogPost.id}}">{{blogPost.title}}</a></td>
+<td>Created By : {{blogPost.createdBy.username}}</td>
+<td>Created On: {{blogPost.createdOn | date:'MM/dd/yyyy HH:mm'}}</td>
+
+</tr>
+</table>
+</div>
+</body>
+</html>

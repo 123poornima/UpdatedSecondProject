@@ -1,4 +1,6 @@
 package com.niit.backend.controller;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.niit.backend.dao.FileUploadDAO;
 import com.niit.backend.dao.UserDao;
 import com.niit.backend.model.User;
 import com.niit.backend.model.Error;
+import com.niit.backend.model.FileUpload;
 @RestController
 public class UserController 
 {
@@ -22,6 +27,8 @@ public class UserController
 	@Autowired
 	private UserDao userDao;
 	
+	@Autowired
+	private FileUploadDAO fileUploadDao;
 	@Autowired
 	private User validUser;
 
@@ -48,10 +55,28 @@ public class UserController
 			validUser.setOnline(true);
 			userDao.updateUser(validUser); // to update online status in db
 			logger.debug("validUser is not null");
+			
+			 //select * from proj2_profile_pics where username='adam';
+			  FileUpload getUploadFile=fileUploadDao.getFile(user.getUsername());
+			  if(getUploadFile!=null){
+		  	String name=getUploadFile.getFileName();
+		  	System.out.println(getUploadFile.getData());
+		  	byte[] imagefiles=getUploadFile.getData();
+		  	try{
+		  		String path="F:/SecondPro/backendPro/src/main/webapp/WEB-INF/resources/imaged/"+user.getUsername();
+		  		File file=new File(path);
+		  		//file.mkdirs();
+		  		FileOutputStream fos = new FileOutputStream(file);//to Write some data 
+		  		fos.write(imagefiles);
+		  		fos.close();
+		  		}catch(Exception e){
+		  		e.printStackTrace();
+		  		}
+			  }
+			
 			return new ResponseEntity<User>(validUser,HttpStatus.OK);//200
 		}
 	}
-
 	//'?'  - Any Type [User,Error] 
 	//ENDPOINT : http://localhost:8080/proj2backend/register 
 	@RequestMapping(value="/register",method=RequestMethod.POST)
@@ -81,13 +106,23 @@ public class UserController
 		if(user!=null){
 			user.setOnline(false);
 			userDao.updateUser(user);
+			try{
+	                        //change according to your workspace path and project name
+				
+		  		String path="F:/SecondPro/backendPro/src/main/webapp/WEB-INF/resources/imaged/"+user.getUsername();
+		  		File file=new File(path);
+		  		System.out.println(file.delete());
+		  		
+		  		}catch(Exception e){
+		  		e.printStackTrace();
+		  		}
 		}
 		session.removeAttribute("user");
 		session.invalidate();
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/getUsers", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> listUsers(){
 		
 		
@@ -100,4 +135,5 @@ public class UserController
 	
 }
 
+	
 }

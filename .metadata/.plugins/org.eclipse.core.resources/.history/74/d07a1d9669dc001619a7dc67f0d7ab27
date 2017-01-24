@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+<!-- Registration code -->
+<div class="container" >   
+   <div class="container" style="align:center; margin: 120px 0px 0px 10px"> 
+   <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">      
+           
+       <h2 style="color:#F5F5DC;align:center">Please Sign Up</h2>
+		<hr class="colorgraph">        
+			<div class="form-group" >
+                  <input style="background-color:#FFFFE0" required="true" ng-model="user.username" path="name" type="text" name="name" class="form-control input-lg" placeholder="Name" tabindex="1" />
+		    </div>    			
+			<div class="form-group">
+				<input style="background-color:#FFFFE0" path="password" required="true"  type="password" ng-model="user.password" name="password" class="form-control input-lg" placeholder="password" tabindex="2" />
+			</div>   		
+			<div class="form-group">
+				<input style="background-color:#FFFFE0" required="true"  path="mailId" type="text" ng-model="user.email" name="email"  class="form-control input-lg" placeholder="Email Address" tabindex="3" />
+			</div>
+			<!-- <div class="row">
+			<div class="form-group">
+			<label>Select role</label>
+			</div>
+				<div class="form-group">
+					<input type="radio" ng-model="user.role" value="STUDENT">Student
+                    <input type="radio" ng-model="user.role" value="ALUMNI">Alumni
+                    <input  type="radio" ng-model="user.role" value="EMPLOYEE">Employee
+				</div>
+				
+			</div>  			
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-md-6"><input type="submit" ng-click="registerUser()" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="6" ></div>
+			</div>         -->
+               <div class="row">
+				<div class="col-xs-4 col-sm-3 col-md-3">
+					<label style="color:#F5F5DC">Select role</label>
+				</div>
+				<div class="col-xs-8 col-sm-9 col-md-9">
+					<input type="radio" ng-model="user.role" value="STUDENT"><label  style="color:#F5F5DC">Student</label>
+                    <input style="color:#F5F5DC" type="radio" ng-model="user.role" value="ALUMNI">Alumni
+                    <input style="color:#F5F5DC" type="radio" ng-model="user.role" value="EMPLOYEE">Employee
+				</div>
+			</div>
+			<hr class="colorgraph">
+			<div class="row">
+				<div class="col-xs-12 col-md-6"><input type="submit" ng-click="registerUser()" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="6" ></div>
+			</div> 
+      </div>
+      {{errorMessage}}
+       </div>
+    </div>
+   </div> 
+</body>
+</html>

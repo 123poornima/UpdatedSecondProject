@@ -2,9 +2,22 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+<style>
+h2{
+color:#F5F5DC;
+font-family: "Times New Roman", Times, serif;
+}
+</style>
 </head>
-<body>
+<!-- <body>
 <table class="table table-striped">
 <tr>
 <th>ID</th>
@@ -28,5 +41,31 @@
 
 </tr>
 </table>
+</body> -->
+
+<body>
+<a style="color:#F5F5DC;margin:5px 0px 0px 0px" href="#/home"><span class="glyphicon glyphicon-home"></span></a>
+<h2><center>List of Users</center></h2>
+<div class="table table-striped">
+<table class="table" align="center">
+<tr bgcolor=#FAEBD7>
+<th>USERNAME</th>
+<th>EMAIL</th>
+<th>ISONLINE</th>
+<th>ROLE</th>
+<th></th>
+</tr>
+<tr bgcolor="#F0F8FF" ng-repeat="u in users">
+<td>{{u.username}}</td>
+<td>{{u.email}}</td>
+<td ng-if="u.online">Yes</td>
+<td ng-if="!u.online">No</td>
+
+<td>{{u.role}}</td>
+<td><a href="" ng-click="friendRequest(u.username)" class="btn btn-warning" >Send Friend Request</a></td>
+</tr>
+</table>`
+</div>
+
 </body>
 </html>

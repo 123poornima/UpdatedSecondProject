@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 style="color:#F5F5DC">Pending Requests</h2>
+<table class="table" align="center">
+<tr bgcolor="#F0F8FF" ng-repeat="p in pendingRequest">
+<td>{{p.fromId}}</td>
+<td><a href="" ng-click="updatePendingRequest(p.fromId,'A')" class="btn btn-default">Accept</a></td>
+<td><a href="" ng-click="updatePendingRequest(p.fromId,'D')" class="btn btn-default">Deny</a></td>
+</tr>
+
+</table>
+</body>
+</html>

@@ -10,4 +10,5 @@ public interface UserDao
 	public void updateUser(User user);
 	public User registerUser(User user);
 	public List<User> userList();
+	public List<User> getAllUsers(User user);
 }

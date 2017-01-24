@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div align="center">
+        <form method="post" action="http://localhost:8085/backendPro/doUpload" enctype="multipart/form-data">
+            <table border="0">
+                <tr style="color:#F5F5DC">
+                    <td style="color:#F5F5DC";margin-top:40px>Pick file #1:</td>
+                    <td><input style="margin-top:40px" class="btn btn-success" type="file" name="fileUpload" /></td>
+                    <br>
+                </tr>
+             <br>
+           
+                <tr>
+                 <br>
+                    <td colspan="2" align="center"><input style="margin-top:50px;margin-left:150px" class="btn btn-warning" type="submit" value="Upload" /></td>
+                </tr>
+                
+                
+            </table>
+        </form>
+    </div>
+</body>
+</html>

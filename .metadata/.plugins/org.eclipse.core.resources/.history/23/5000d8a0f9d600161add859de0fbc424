@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+<form>
+<table>
+<tr><td>Username</td><td><input type="text" ng-model="user.username"></td></tr>
+<tr><td>password</td><td><input type="password" ng-model="user.password"></td></tr>
+<tr><td>email</td><td><input type="text" ng-model="user.email"></td></tr>
+
+
+
+<tr><td>Select role</td><td>
+<input type="radio" ng-model="user.role" value="STUDENT">Student
+<input type="radio" ng-model="user.role" value="ALUMNI">Alumni
+<input type="radio" ng-model="user.role" value="EMPLOYEE">Employee</td>
+</tr>
+
+<tr><td><input type="submit" ng-click="registerUser()" value="Register"></td></tr>
+
+
+</table>
+
+</form>
+{{errorMessage}}
+</body>
+</html>

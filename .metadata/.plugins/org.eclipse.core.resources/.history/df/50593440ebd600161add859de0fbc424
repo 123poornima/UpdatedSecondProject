@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+<style>
+body{ 
+background-image: url(resources/images/bgk19.jpg); 
+background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-color:black;
+ }S
+</style>
+</head>
+<body>
+<form>
+<table>
+<tr>
+<td>Enter user name</td><td><input type="text" ng-model="user.username"></td>
+</tr>
+<tr>
+<td>Enter password</td><td><input type="password" ng-model="user.password"></td>
+
+</tr>
+<tr>
+<td><input type="submit" ng-click="submit()"></td>
+</tr>
+
+</table>
+
+</form>
+</body>
+</html>

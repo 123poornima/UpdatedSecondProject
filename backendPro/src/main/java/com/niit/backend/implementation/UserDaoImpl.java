@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -89,6 +90,19 @@ public class UserDaoImpl implements UserDao
 		return list;
 				
 	}
-	
+	@Override
+	public List<User> getAllUsers(User user) {
+		Session session=sessionFactory.openSession();
+		SQLQuery query=session.createSQLQuery("select * from users where username in (select username from users where username!=? minus(select to_id from friend where from_id=? union select from_id from friend where to_id=?))");
+		query.setString(0, user.getUsername());
+		query.setString(1, user.getUsername());
+		query.setString(2, user.getUsername());
+		query.addEntity(User.class);
+		List<User> users=query.list();
+		System.out.println(users);
+		session.close();
+		return users;
+	}
+
 	
 }

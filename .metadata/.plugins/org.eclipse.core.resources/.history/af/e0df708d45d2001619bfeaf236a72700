@@ -1,0 +1,43 @@
+package com.niit.backend.test;
+
+import java.util.Date;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.backend.dao.BlogDao;
+import com.niit.backend.dao.JobDao;
+import com.niit.backend.model.BlogPost;
+import com.niit.backend.model.Job;
+import com.niit.backend.model.User;
+
+public class BlogTest {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
+		context.scan("com.niit");
+		context.refresh();
+		
+		
+		BlogDao blogDao= (BlogDao) context.getBean("blogDao");
+
+		BlogPost blogPost=(BlogPost) context.getBean("blogPost");
+		
+
+		blogPost.setId(1);
+		blogPost.setCreatedOn(new Date(21/12/2016));
+		User user=new User();
+		user.setId(1);
+		blogPost.setCreatedBy(user);
+		blogPost.setTitle("hhhhh");
+		//blogPost.setComments(comments);
+		
+		
+		
+		
+		blogDao.addJob(blogPost);
+
+	}
+
+}

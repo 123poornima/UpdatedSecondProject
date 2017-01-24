@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.niit.backend.dao.Blogdao&apos; to &apos;BlogDao&apos;&#x0D;&#x0A;- Original project: &apos;backendPro&apos;&#x0D;&#x0A;- Original element: &apos;com.niit.backend.dao.Blogdao&apos;&#x0D;&#x0A;- Renamed element: &apos;com.niit.backend.dao.BlogDao&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Blogdao&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.niit.backend.dao{Blogdao.java[Blogdao" matchStrategy="1" name="BlogDao" qualified="false" references="true" similarDeclarations="false" stamp="1483454045250" textual="false" version="1.0"/>
+</session>

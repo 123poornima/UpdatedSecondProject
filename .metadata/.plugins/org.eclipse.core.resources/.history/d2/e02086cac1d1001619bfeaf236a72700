@@ -1,0 +1,10 @@
+package com.niit.backend.dao;
+
+public interface BlogDao 
+{
+	List<BlogPost> getBlogPosts();
+	BlogPost getBlogPost(int id);
+	BlogPost addBlogPost(User user,BlogPost blogPost);
+	List<BlogComment> getBlogComments(int blogId);
+	BlogPost addBlogPostComment(User user,BlogComment blogComment);
+}

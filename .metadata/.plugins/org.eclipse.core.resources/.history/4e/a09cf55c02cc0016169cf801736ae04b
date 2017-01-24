@@ -1,0 +1,7 @@
+package com.niit.backend.dao;
+
+public interface FileUploadDao 
+{
+	void save(UploadFile uploadFile);
+	UploadFile getFile(String username);
+}

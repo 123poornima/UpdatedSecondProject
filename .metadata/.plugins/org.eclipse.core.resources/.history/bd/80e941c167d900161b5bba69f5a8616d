@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+<style>
+div.relative {
+    position: relative;
+    width: 800px;
+    height: 120px;
+    border: 3px solid aqua;
+} 
+
+div.absolute {
+    position: absolute;
+    top: 5px;
+    right: 800px;
+    width: 10px;
+    height: 100px;
+    border: 3px solid transparent;
+}
+div.absolute1 {
+    position: absolute;
+    top: 40px;
+    right: 250px;
+    width: 400px;
+    height: 200px;
+    border: 1px solid transparent;
+}
+</style>
+</head>
+<body align="center">
+<h2 style="color:#F5F5DC"><center>CHAT</center></h2>
+<div class="relative" style="align:left">
+<br>
+  <div class="absolute">
+   <img class="img-rounded" src="resources/images/chat1_img.jpg" alt="CATEGORIES" style="width:200px;height:100px;align:top-left">
+ 
+</div>
+
+<!-- <div class="absolute1">
+ <form style="align:center; margin: 10px 0px 0px 30px" ng-submit="addMessage()" name="messageForm">
+      <div class="form-group">
+        <input style="width:350px" class="form-control" type="text" placeholder="Compose a new message..." ng-model="message" />
+        </div>
+        <div class="info" style="align:right;margin:0px 0px 0px 200px">
+        <br>         
+          <span style="color:#BDB76B" class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+          
+          <button style="background-color:Aqua;color:black;width:100px" class="btn btn-default" ng-disabled="message.length > max || message.length === 0">Send</button>
+        </div>
+      </form> 
+  
+</div> -->
+</div>
+  
+   <br>
+     
+     <div class="container" style="align:top; margin: 0px 200px 0px 500px">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+<!--                     <div class="btn-group pull-right"> -->
+<!--                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"> -->
+<!--                             <span class="glyphicon glyphicon-chevron-down"></span> -->
+<!--                         </button> -->
+<!--                          </div> -->
+                </div>
+                 <div class="panel-body">
+                  <p style="color:black;font-size:110%;font-family:verdana;" ng-repeat="message in messages | orderBy:'time':true" class="message">
+        <time>{{message.time | date:'HH:mm'}}</time>
+        <span style="color:black;font-size:110%;font-family:italic;" ng-class="{self: message.self}"><font face="Comic sans MS"></font>{{message.message}}</span>
+      </p>    
+           </div>
+                
+                <div class="panel-footer">
+                <form style="align:center; margin: 10px 0px 0px 30px" ng-submit="addMessage()" name="messageForm">
+                    <div class="input-group">
+                       <input style="width:350px" class="form-control" type="text" placeholder="Compose a new message..." ng-model="message" />
+                        <span class="input-group-btn">
+                             <span style="color:#BDB76B" class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+          
+          <button class="btn btn-warning btn-sm" ng-disabled="message.length > max || message.length === 0">Send</button>
+                        </span>
+                    </div>
+                     </form>
+                </div>
+       <!--  <div class="panel-footer">
+        
+          <form style="align:center; margin: 10px 0px 0px 30px" ng-submit="addMessage()" name="messageForm">
+          <div class="form-group">
+        <input style="width:350px" class="form-control" type="text" placeholder="Compose a new message..." ng-model="message" />
+        </div>
+        <div class="info" style="align:right;margin:0px 0px 0px 200px">
+        <br>         
+          <span style="color:#BDB76B" class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+          
+          <button style="background-color:Aqua;color:black;width:100px" class="btn btn-default" ng-disabled="message.length > max || message.length === 0">Send</button>
+        </div>
+      </form> 
+      </div> -->
+                </div>
+                 </div>
+                 </div>
+                 </div>
+     <!--  <p style="color:#F0F8FF;font-size:110%;font-family:verdana;" ng-repeat="message in messages | orderBy:'time':true" class="message">
+        <time>{{message.time | date:'HH:mm'}}</time>
+        <span style="color:#F0F8FF;font-size:110%;font-family:italic;" ng-class="{self: message.self}"><font face="Comic sans MS"></font>{{message.message}}</span>
+      </p>     --> 
+</body>
+</html>

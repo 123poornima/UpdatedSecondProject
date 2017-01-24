@@ -1,0 +1,27 @@
+package com.niit.backend.test;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.backend.dao.FileUploadDAO;
+import com.niit.backend.dao.JobDao;
+import com.niit.backend.model.Job;
+import com.niit.backend.model.UploadFile;
+
+public class UploadFileTest {
+
+	public static void main(String[] args)
+	{
+		// TODO Auto-generated method stub
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
+		context.scan("com.niit");
+		context.refresh();
+		
+		
+		FileUploadDAO fileUploadDao= (FileUploadDAO) context.getBean("fileUploadDao");
+
+		UploadFile uploadFile=(UploadFile) context.getBean("uploadFile");
+		
+
+	}
+
+}

@@ -1,0 +1,42 @@
+app.factory('JobService',function($http){
+	var jobService=this;
+	var BASE_URL ="http://localhost:8081/backendPro"
+		
+		userService.fetchAllUsers=function(){
+		console.log('entering fetchallusers in service')
+		return $http.get("http://localhost:8081/backendPro/user")
+		.then(function(response){
+			//response is an object returened from the back end
+			//data,status,headers,statustext
+			//data-list of person
+			console.log(response.data)
+			console.log(response.status)
+			return response.data
+		},
+		function(response)
+		{
+			console.log(response.data)
+			return response.data
+		})
+	};
+	
+	jobService.saveJob=function(job){
+		return $http.post(BASE_URL + "/postJob" , job)
+		.then(function(response){
+			console.log('job service sucess')
+			console.log(response.status)
+			console.log(response.headers.location)
+			return response.status
+		},function(response){
+			console.log('job service failure')
+			console.log(response.status)
+			return response.status
+		})
+	}
+	
+	
+	jobService.getAllJobs=function(){
+		return $http.get(BASE_URL + "/getAllJobs");
+	}
+	return jobService;
+})

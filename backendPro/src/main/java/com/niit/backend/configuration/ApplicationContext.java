@@ -2,8 +2,6 @@ package com.niit.backend.configuration;
 import java.util.Properties;
 
 import javax.sql.DataSource;
-
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +12,11 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.backend.model.BlogComment;
+import com.niit.backend.model.BlogPost;
+import com.niit.backend.model.Friend;
 import com.niit.backend.model.Job;
+import com.niit.backend.model.FileUpload;
 import com.niit.backend.model.User;
 
 
@@ -57,19 +59,19 @@ public class ApplicationContext
 		sessionBuilder.setProperty("hibernate.show_sql", "true");
 		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.addAnnotatedClass(Job.class);
+		sessionBuilder.addAnnotatedClass(FileUpload.class);
+		sessionBuilder.addAnnotatedClass(Friend.class);
+		sessionBuilder.addAnnotatedClass(BlogPost.class);
+		sessionBuilder.addAnnotatedClass(BlogComment.class);
 		
 
 
 		//sessionBuilder.addAnnotatedClass(UserDetails.class);
 		System.out.println("connected");
 		return sessionBuilder.buildSessionFactory();
-	
-		
-		
+			
 	}
-	
-	
-	
+		
 	@Autowired
 	@Bean(name="transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory)
@@ -79,4 +81,5 @@ public class ApplicationContext
 		return transactionManager;
 		
 	}
+	
 }

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body> 
+
+<img src="http://localhost:8083/backendPro/WEB-INF/resources/images/{{currentUser.username}}"  width="5%" height="5%">
+
+</body>
+</html>

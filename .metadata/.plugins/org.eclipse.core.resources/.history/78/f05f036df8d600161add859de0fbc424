@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+<style>
+body{ 
+background-image: url(resources/images/secpro4.jpg); 
+background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-color:black;
+ }
+</style>
+</head>
+<body>
+<div class="container" style="align:center; margin: 150px 0px 0px 120px">
+   <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-4 col-md-offset-3">
+    
+ 
+          <h2 style="color:#000000">Please Login</h2>
+	     <hr class="colorgraph"> 
+        <div class="row">
+				<div class="col-sm-12 ">
+					<div class="form-group">
+						<input style="background-color:#FFFFE0" type="text" ng-model="user.username" placeholder="Name" name="username" class="form-control input-lg"  />
+					</div>
+		       </div>
+		 </div>
+			
+		 <div class="row">
+				<div class="col-xs-12">
+					<div class="form-group">
+						<input style="background-color:#FFFFE0" type="password"  name="password" ng-model="user.password" placeholder="Password" class="form-control input-lg"  tabindex="2" />
+					</div>
+			 </div> 			
+		</div>
+			<hr class="colorgraph"> 
+ 			<div class="row">
+				<div class="col-xs-12 col-md-6"><input type="submit" ng-click="submit()" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+				
+			</div>
+			
+			</div>
+	  </div>
+	</div>
+</body>
+</html>
